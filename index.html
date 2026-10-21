@@ -1,1 +1,882 @@
+<!DOCTYPE html>
+<html lang="vi">
 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nhóm 9 - Giới Thiệu Thành Viên</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg-dark: #0a0e17;
+            --card-bg: rgba(22, 28, 44, 0.7);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-border-hover: rgba(255, 255, 255, 0.25);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --text-muted: #64748b;
+            --radius-lg: 24px;
+            --radius-md: 16px;
+            --radius-sm: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            min-height: 100vh;
+            padding: 40px 20px 60px;
+            position: relative;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        .ambient-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.4;
+            animation: floatOrb 20s ease-in-out infinite alternate;
+        }
+
+        .orb-1 {
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, #6366f1, #4f46e5);
+            top: -100px;
+            left: -100px;
+        }
+
+        .orb-2 {
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, #ec4899, #8b5cf6);
+            top: 40%;
+            right: -120px;
+            animation-duration: 22s;
+        }
+
+        .orb-3 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, #06b6d4, #3b82f6);
+            bottom: -100px;
+            left: 20%;
+            animation-duration: 18s;
+        }
+
+        @keyframes floatOrb {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            50% {
+                transform: translate(50px, 40px) scale(1.08);
+            }
+
+            100% {
+                transform: translate(-30px, 70px) scale(0.95);
+            }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            text-align: center;
+            padding: 45px 25px;
+            margin-bottom: 45px;
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .badge-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 18px;
+            background: rgba(99, 102, 241, 0.12);
+            border: 1px solid rgba(99, 102, 241, 0.35);
+            border-radius: 999px;
+            color: #818cf8;
+            font-size: 0.85em;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+
+        .header h1 {
+            font-size: 3.2em;
+            font-weight: 800;
+            letter-spacing: -1px;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 40%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.05em;
+            max-width: 600px;
+            margin: 0 auto 25px;
+        }
+
+        .team-stats {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: var(--radius-md);
+            padding: 14px 28px;
+            min-width: 150px;
+            transition: all 0.3s ease;
+        }
+
+        .stat-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(99, 102, 241, 0.4);
+            transform: translateY(-3px);
+        }
+
+        .stat-number {
+            font-size: 1.8em;
+            font-weight: 800;
+            display: block;
+            background: linear-gradient(135deg, #a5b4fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.85em;
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+
+        .members-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 380px));
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .member-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            padding: 32px 24px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--card-gradient, linear-gradient(90deg, #6366f1, #a855f7));
+            opacity: 0.8;
+            transition: height 0.3s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--card-border-hover);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 25px var(--card-glow, rgba(99, 102, 241, 0.25));
+        }
+
+        .member-card:hover::before {
+            height: 6px;
+        }
+
+        .member-card[data-theme="indigo"] {
+            --card-gradient: linear-gradient(135deg, #4f46e5, #7c3aed);
+            --card-accent: #818cf8;
+            --card-glow: rgba(99, 102, 241, 0.3);
+        }
+
+        .member-card[data-theme="cyan"] {
+            --card-gradient: linear-gradient(135deg, #0284c7, #0d9488);
+            --card-accent: #38bdf8;
+            --card-glow: rgba(56, 189, 248, 0.3);
+        }
+
+        .member-card[data-theme="violet"] {
+            --card-gradient: linear-gradient(135deg, #7c3aed, #c026d3);
+            --card-accent: #c084fc;
+            --card-glow: rgba(192, 132, 252, 0.3);
+        }
+
+        .member-card[data-theme="amber"] {
+            --card-gradient: linear-gradient(135deg, #d97706, #ea580c);
+            --card-accent: #fbbf24;
+            --card-glow: rgba(245, 158, 11, 0.3);
+        }
+
+        .member-card[data-theme="emerald"] {
+            --card-gradient: linear-gradient(135deg, #059669, #0d9488);
+            --card-accent: #34d399;
+            --card-glow: rgba(52, 211, 153, 0.3);
+        }
+
+        .member-card[data-theme="rose"] {
+            --card-gradient: linear-gradient(135deg, #e11d48, #db2777);
+            --card-accent: #fb7185;
+            --card-glow: rgba(244, 63, 94, 0.3);
+        }
+
+        .avatar-box {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin-bottom: 20px;
+        }
+
+        .avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.12);
+            background: #182035;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.4s ease;
+        }
+
+        .avatar-placeholder {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+            border: 4px dashed rgba(255, 255, 255, 0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: var(--card-accent);
+            font-size: 2.4em;
+            transition: all 0.3s ease;
+        }
+
+        .avatar-placeholder span {
+            font-size: 0.32em;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .member-card:hover .avatar-img,
+        .member-card:hover .avatar-placeholder {
+            transform: scale(1.06);
+            border-color: var(--card-accent);
+        }
+
+        .avatar-box::after {
+            content: '';
+            position: absolute;
+            inset: -4px;
+            border-radius: 50%;
+            background: var(--card-gradient);
+            z-index: -1;
+            opacity: 0.6;
+            filter: blur(8px);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            width: 16px;
+            height: 16px;
+            background: #10b981;
+            border: 3px solid #0f172a;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #10b981;
+        }
+
+        .member-name {
+            font-size: 1.45em;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .role-pill {
+            display: inline-block;
+            padding: 5px 14px;
+            border-radius: 999px;
+            font-size: 0.82em;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--card-accent);
+            margin-bottom: 18px;
+        }
+
+        .view-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 999px;
+            color: var(--text-primary);
+            font-size: 0.88em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: auto;
+        }
+
+        .member-card:hover .view-btn {
+            background: var(--card-gradient);
+            border-color: transparent;
+            color: #ffffff;
+            box-shadow: 0 6px 18px var(--card-glow);
+            transform: translateY(-2px);
+        }
+
+        .view-btn i {
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+        }
+
+        .member-card:hover .view-btn i {
+            transform: translateX(4px);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(4, 7, 14, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-box {
+            background: #111726;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: var(--radius-lg);
+            width: 100%;
+            max-width: 780px;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.7);
+            transform: scale(0.9) translateY(20px);
+            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .modal-overlay.active .modal-box {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #ffffff;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.2s ease;
+        }
+
+        .modal-close-btn:hover {
+            background: #f43f5e;
+            border-color: #f43f5e;
+            transform: rotate(90deg);
+        }
+
+        .modal-banner {
+            height: 140px;
+            background: var(--modal-gradient, linear-gradient(135deg, #4f46e5, #7c3aed));
+            position: relative;
+        }
+
+        .modal-banner::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.25), transparent 70%);
+        }
+
+        .modal-header-content {
+            padding: 0 32px 20px;
+            margin-top: -65px;
+            display: flex;
+            align-items: flex-end;
+            gap: 24px;
+            position: relative;
+        }
+
+        .modal-avatar-box {
+            position: relative;
+            width: 130px;
+            height: 130px;
+            flex-shrink: 0;
+        }
+
+        .modal-avatar-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #111726;
+            background: #1e293b;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-header-text {
+            flex-grow: 1;
+            padding-bottom: 6px;
+        }
+
+        .modal-name {
+            font-size: 1.9em;
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .modal-role {
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 999px;
+            font-size: 0.85em;
+            font-weight: 600;
+            background: rgba(255, 255, 255, 0.08);
+            color: var(--modal-accent, #818cf8);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+
+        .modal-body {
+            padding: 10px 32px 36px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .modal-bio-box {
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid var(--modal-accent, #818cf8);
+            padding: 16px 20px;
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            font-size: 0.98em;
+            color: #cbd5e1;
+            line-height: 1.7;
+            font-style: italic;
+        }
+
+        .modal-section-title {
+            font-size: 0.82em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-muted);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .modal-section-title i {
+            color: var(--modal-accent, #818cf8);
+            font-size: 1.1em;
+        }
+
+        .modal-skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .modal-skill-tag {
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e2e8f0;
+            padding: 6px 16px;
+            border-radius: 999px;
+            font-size: 0.85em;
+            font-weight: 500;
+        }
+
+        .modal-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 12px;
+        }
+
+        .modal-info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: var(--radius-sm);
+            font-size: 0.9em;
+            color: var(--text-secondary);
+        }
+
+        .modal-info-item i {
+            width: 22px;
+            text-align: center;
+            color: var(--modal-accent, #818cf8);
+            font-size: 1.1em;
+        }
+
+        .modal-socials {
+            display: flex;
+            gap: 12px;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .modal-social-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            font-size: 1.1em;
+        }
+
+        .modal-social-btn:hover {
+            color: #ffffff;
+            background: var(--modal-gradient, #6366f1);
+            transform: translateY(-3px) scale(1.1);
+            border-color: transparent;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 35px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.9em;
+        }
+
+        .footer .heart {
+            color: #f43f5e;
+            display: inline-block;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 20px 14px 40px;
+            }
+
+            .header {
+                padding: 30px 18px;
+            }
+
+            .header h1 {
+                font-size: 2.2em;
+            }
+
+            .members-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .modal-header-content {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                margin-top: -55px;
+                gap: 14px;
+            }
+
+            .modal-name {
+                font-size: 1.5em;
+            }
+
+            .modal-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-socials {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <span class="badge-tag">
+                <i class="fas fa-layer-group"></i> Dự Án Giữa Kỳ • Môn Lập Trình Web
+            </span>
+            <h1>Nhóm 9</h1>
+            <p class="subtitle">
+                Chào mừng bạn đến với trang giới thiệu Nhóm 9. Nhấn vào từng thành viên để xem toàn bộ thông tin chi
+                tiết.
+            </p>
+            <div class="team-stats">
+                <div class="stat-item">
+                    <span class="stat-number">Nhóm 9</span>
+                    <span class="stat-label">Tên nhóm</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">06</span>
+                    <span class="stat-label">Thành viên</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Nhiệt huyết</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="members-grid">
+            <div class="member-card" data-theme="indigo" onclick="openMemberModal(0)">
+                <div class="avatar-box">
+                    <img src="tin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
+                        onload="this.style.display='block'; this.nextElementSibling.style.display='none';">
+                    <div class="avatar-placeholder">
+                        <i class="fas fa-user"></i>
+                        <span>Thêm ảnh</span>
+                    </div>
+                    <span class="status-dot"></span>
+                </div>
+                <h2 class="member-name">Thành Viên 1</h2>
+                <span class="role-pill">Trưởng Nhóm</span>
+                <button class="view-btn" type="button">
+                    <span>Xem chi tiết</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Trang giới thiệu thành viên Nhóm 9 <span class="heart"><i class="fas fa-heart"></i></span> Dự án giữa kỳ
+            </p>
+        </footer>
+    </div>
+
+    <div class="modal-overlay" id="memberModal" onclick="handleOverlayClick(event)">
+        <div class="modal-box" id="modalBox">
+            <button class="modal-close-btn" onclick="closeMemberModal()" type="button" title="Đóng">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-banner" id="modalBanner"></div>
+            <div class="modal-header-content">
+                <div class="modal-avatar-box">
+                    <img src="" alt="Avatar Chi Tiết" class="modal-avatar-img" id="modalAvatar">
+                </div>
+                <div class="modal-header-text">
+                    <h2 class="modal-name" id="modalName">Tên Thành Viên</h2>
+                    <span class="modal-role" id="modalRole">Vai Trò</span>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="modal-bio-box" id="modalBio">
+                    Phần giới thiệu bản thân sẽ hiển thị chi tiết tại đây khi bạn bấm vào từng người.
+                </div>
+
+                <div>
+                    <div class="modal-section-title">
+                        <i class="fas fa-laptop-code"></i> Kỹ năng & Chuyên môn
+                    </div>
+                    <div class="modal-skills-list" id="modalSkills"></div>
+                </div>
+
+                <div>
+                    <div class="modal-section-title">
+                        <i class="fas fa-user-graduate"></i> Thông tin cá nhân
+                    </div>
+                    <div class="modal-info-grid">
+                        <div class="modal-info-item">
+                            <i class="fas fa-book"></i>
+                            <span id="modalMajor">Chuyên ngành: Công nghệ thông tin</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <i class="fas fa-school"></i>
+                            <span id="modalSchool">Trường: Đại học [Điền tên trường]</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <span id="modalEmail">Email: email@example.com</span>
+                        </div>
+                        <div class="modal-info-item">
+                            <i class="fas fa-quote-left"></i>
+                            <span id="modalQuote">Châm ngôn: "Cố gắng hết mình"</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-socials" id="modalSocials">
+                    <a href="#" class="modal-social-btn" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="modal-social-btn" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="#" class="modal-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="modal-social-btn" title="Email"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const membersData = [
+            {
+                name: "Thành Viên 1",
+                role: "Trưởng Nhóm",
+                avatar: "tin.jpg",
+                theme: "linear-gradient(135deg, #4f46e5, #7c3aed)",
+                accent: "#818cf8",
+                bio: "Chào mọi người, mình là Trưởng nhóm 9! Mình thích lập trình web, thiết kế hệ thống và cùng các thành viên hoàn thành thật tốt bài tập giữa kỳ này.",
+                skills: ["HTML / CSS", "JavaScript", "React", "Node.js", "Git"],
+                major: "Chuyên ngành: Công nghệ thông tin",
+                school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
+                email: "Email: voductin789@gmail.com",
+                quote: "Châm ngôn: Học hỏi mỗi ngày để tiến bộ hơn",
+                facebook: "#",
+                github: "#",
+                linkedin: "#"
+            },
+
+        ];
+
+        function openMemberModal(index) {
+            const data = membersData[index];
+            if (!data) return;
+
+            const modal = document.getElementById('memberModal');
+            const box = document.getElementById('modalBox');
+
+            box.style.setProperty('--modal-gradient', data.theme);
+            box.style.setProperty('--modal-accent', data.accent);
+
+            document.getElementById('modalName').textContent = data.name;
+            document.getElementById('modalRole').textContent = data.role;
+            document.getElementById('modalBio').textContent = data.bio;
+            document.getElementById('modalMajor').textContent = data.major;
+            document.getElementById('modalSchool').textContent = data.school;
+            document.getElementById('modalEmail').textContent = data.email;
+            document.getElementById('modalQuote').textContent = data.quote;
+
+            const cardImg = document.querySelectorAll('.member-card')[index]?.querySelector('.avatar-img');
+            const userAvatar = (data.avatar && data.avatar.trim() !== '') ? data.avatar : (cardImg && cardImg.getAttribute('src') ? cardImg.getAttribute('src') : '');
+            const avatarEl = document.getElementById('modalAvatar');
+            if (userAvatar && userAvatar.trim() !== '') {
+                avatarEl.src = userAvatar;
+                avatarEl.style.display = 'block';
+            } else {
+                avatarEl.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
+            }
+
+            const skillsEl = document.getElementById('modalSkills');
+            skillsEl.innerHTML = '';
+            data.skills.forEach(skill => {
+                const tag = document.createElement('span');
+                tag.className = 'modal-skill-tag';
+                tag.textContent = skill;
+                skillsEl.appendChild(tag);
+            });
+
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMemberModal() {
+            const modal = document.getElementById('memberModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function handleOverlayClick(event) {
+            if (event.target === document.getElementById('memberModal')) {
+                closeMemberModal();
+            }
+        }
+
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape') {
+                closeMemberModal();
+            }
+        });
+    </script>
+</body>
+
+</html>
