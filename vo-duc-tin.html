@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Võ Đức Tín • Portfolio Cá Nhân • Nhóm 9 UTH</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Main Style -->
+    <link rel="stylesheet" href="style-portfolio.css">
+</head>
+
+<body>
+    <!-- Hiệu ứng Ambient Glow Orbs huyền ảo đồng bộ với Cổng Nhóm 9 -->
+    <div class="ambient-bg">
+        <div class="ambient-orb orb-1"></div>
+        <div class="ambient-orb orb-2"></div>
+        <div class="ambient-orb orb-3"></div>
+    </div>
+
+    <!-- Header / Navbar Thanh Điều Hướng Nổi Bật (Tiêu chí 1) -->
+    <header class="header-nav">
+        <div class="nav-glass-bar">
+            <a href="#about" class="nav-brand">
+                <span class="brand-pill">NHÓM 9</span>
+                <span class="brand-text">VÕ ĐỨC TÍN</span>
+            </a>
+
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#about" class="active">Giới Thiệu</a></li>
+                    <li><a href="#career">Mục Tiêu</a></li>
+                    <li><a href="#skills">Kỹ Năng</a></li>
+                    <li><a href="#projects">Dự Án</a></li>
+                    <li><a href="#roadmap">Học Vấn</a></li>
+                    <li><a href="#contact">Liên Hệ</a></li>
+                </ul>
+            </nav>
+
+            <div class="nav-actions">
+                <button type="button" class="theme-btn" id="themeBtn" title="Đổi giao diện Sáng / Tối">
+                    <i class="fas fa-sun"></i>
+                </button>
+                <a href="index.html" class="back-team-pill">
+                    <i class="fas fa-arrow-left"></i> Về Cổng Nhóm 9
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <!-- SECTION 1: GIỚI THIỆU BẢN THÂN & BANNER (Tiêu chí 1 & 2) -->
+        <section id="about" class="content-section">
+            <div class="hero-grid">
+                <!-- Cột giới thiệu chính -->
+                <div class="glass-card hero-content-card">
+                    <span class="hero-greeting">
+                        <i class="fas fa-sparkles"></i> Xin chào, mình là Trưởng nhóm 9
+                    </span>
+                    <h1 class="hero-name-big">
+                        Võ Đức <span class="name-gradient">Tín</span>
+                    </h1>
+
+                    <!-- Mục tiêu nghề nghiệp (Tiêu chí 3) -->
+                    <div class="career-box" id="career">
+                        <div class="career-label">ĐỊNH HƯỚNG NGHỀ NGHIỆP</div>
+                        <div class="career-role">SOFTWARE ENGINEER TRAINEE (BACKEND FOCUS)</div>
+                    </div>
+
+                    <p class="hero-bio">
+                        Hiện là sinh viên chuyên ngành Công nghệ Thông tin tại Trường ĐH Giao thông Vận tải TP.HCM (UTH). Mình đam mê tìm hiểu kiến trúc mạng máy tính, giao thức Socket TCP/IP và hệ thống hướng đối tượng chuẩn OOP. Mục tiêu của mình là trở thành một Kỹ sư Phần mềm chuyên sâu về Backend vững vàng, tỉ mỉ và đáng tin cậy.
+                    </p>
+
+                    <div class="hero-buttons">
+                        <a href="#projects" class="btn-glow">
+                            <span>Khám phá dự án</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#contact" class="btn-outline-glass">
+                            <span>Gửi tin nhắn</span> <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="https://github.com/voductin789789" target="_blank" class="btn-outline-glass">
+                            <i class="fab fa-github"></i> <span>GitHub</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cột Thẻ Thông Tin Cá Nhân (Glassmorphism Profile Card) -->
+                <div class="glass-card profile-card-wrap">
+                    <div class="profile-avatar-outer">
+                        <img src="tin.jpg" alt="Võ Đức Tín" class="profile-avatar-img"
+                            onerror="this.src='data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 24 24\' fill=\'%23818cf8\'%3E%3Cpath d=\'M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z\'/%3E%3C/svg%3E'">
+                        <span class="online-pulse" title="Sẵn sàng hợp tác"></span>
+                    </div>
+
+                    <h2 class="profile-name">Võ Đức Tín</h2>
+                    <p class="profile-tagline">Trưởng Nhóm 9 • Đại học UTH</p>
+
+                    <div class="info-table">
+                        <div class="info-row">
+                            <i class="fas fa-university"></i>
+                            <span>Trường: <strong>ĐH GTVT TP.HCM (UTH)</strong></span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-laptop-code"></i>
+                            <span>Chuyên ngành: <strong>Công nghệ Thông tin</strong></span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-envelope"></i>
+                            <span>Email: <strong>voductin789@gmail.com</strong></span>
+                        </div>
+                        <div class="info-row">
+                            <i class="fas fa-quote-left"></i>
+                            <span>Châm ngôn: <em>"Học hỏi mỗi ngày để tiến bộ hơn"</em></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: VỀ TÔI & PHƯƠNG PHÁP RÈN LUYỆN (Tiêu chí 2, 5) -->
+        <section class="content-section">
+            <div class="section-head">
+                <span class="section-tag"><i class="fas fa-user"></i> Câu chuyện của tôi</span>
+                <h2 class="section-title">Về Bản Thân & Phương Pháp Làm Việc</h2>
+                <p class="section-subtitle">Tư duy gỡ lỗi bài bản, tra cứu nguyên bản và tinh thần đồng đội cao độ.</p>
+            </div>
+
+            <div class="about-grid">
+                <div class="glass-card about-box">
+                    <h3>Niềm Đam Mê Với Kỹ Thuật Tầng Thấp & Java OOP</h3>
+                    <p>
+                        Tôi không chọn lập trình chỉ vì những ứng dụng bóng bẩy bên ngoài. Tôi bị thu hút bởi cách dữ liệu được chia nhỏ thành từng mảng byte truyền qua cáp mạng, cách hệ điều hành bắt tay và cách các đối tượng Java tương tác với nhau trong bộ nhớ.
+                    </p>
+                    <p>
+                        Trong quá trình học tại UTH, tôi tập trung rèn luyện <strong>Java Core SE 21</strong> và <strong>Lập trình Mạng Socket TCP/IP</strong>. Khi gặp phải ngoại lệ hoặc lỗi deadlock đa luồng, tôi luôn có thói quen đọc kỹ stack trace và tài liệu Oracle Docs thay vì sao chép mù quáng.
+                    </p>
+                    <p>
+                        Với vai trò là trưởng nhóm 9, tôi luôn ưu tiên việc viết code sạch (clean code), phân tách module rõ ràng để mọi thành viên đều có thể đọc hiểu và phát triển thuận lợi.
+                    </p>
+                </div>
+
+                <div class="glass-card method-box">
+                    <div class="method-item">
+                        <div class="method-icon-wrap"><i class="fas fa-bug"></i></div>
+                        <div class="method-text">
+                            <strong>Tác phong gỡ lỗi (Debugging):</strong>
+                            <p>Sử dụng Breakpoint và phân tích luồng biến thay vì phán đoán mò mẫm.</p>
+                        </div>
+                    </div>
+                    <div class="method-item">
+                        <div class="method-icon-wrap"><i class="fas fa-book-reader"></i></div>
+                        <div class="method-text">
+                            <strong>Tra cứu tài liệu chuẩn:</strong>
+                            <p>Ưu tiên Java Language Specification, RFC chuẩn quốc tế và các bài báo kỹ thuật.</p>
+                        </div>
+                    </div>
+                    <div class="method-item">
+                        <div class="method-icon-wrap"><i class="fas fa-users-cog"></i></div>
+                        <div class="method-text">
+                            <strong>Kỷ luật & Tinh thần nhóm:</strong>
+                            <p>Tôn trọng ý kiến thành viên, hỗ trợ đồng đội vượt qua các vướng mắc kỹ thuật.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: KỸ NĂNG CHUYÊN MÔN (Tiêu chí 4) -->
+        <section id="skills" class="content-section">
+            <div class="section-head">
+                <span class="section-tag"><i class="fas fa-code"></i> Công nghệ</span>
+                <h2 class="section-title">Kỹ Năng Chuyên Môn & Công Cụ</h2>
+                <p class="section-subtitle">Được rèn luyện và áp dụng trực tiếp qua các đồ án môn học thực tế.</p>
+            </div>
+
+            <div class="skills-grid">
+                <!-- Thẻ 1 -->
+                <div class="glass-card skill-card">
+                    <div class="skill-card-head">
+                        <div class="skill-icon-box"><i class="fab fa-java"></i></div>
+                        <h3>Java Core & Lập Trình Hướng Đối Tượng</h3>
+                    </div>
+                    <div class="skill-chips-wrap">
+                        <span class="skill-chip">Java SE 21</span>
+                        <span class="skill-chip">4 Nguyên Lý OOP</span>
+                        <span class="skill-chip">Collections Framework</span>
+                        <span class="skill-chip">Multithreading</span>
+                        <span class="skill-chip">File I/O Stream</span>
+                    </div>
+                    <p class="skill-detail-text">Vận dụng thành thạo Kế thừa, Đa hình, Đóng gói và Trừu tượng để thiết kế cấu trúc lớp bền vững; xử lý đồng thời bằng Thread và Runnable an toàn.</p>
+                </div>
+
+                <!-- Thẻ 2 -->
+                <div class="glass-card skill-card">
+                    <div class="skill-card-head">
+                        <div class="skill-icon-box"><i class="fas fa-network-wired"></i></div>
+                        <h3>Mạng Máy Tính & Socket TCP/IP</h3>
+                    </div>
+                    <div class="skill-chips-wrap">
+                        <span class="skill-chip">Socket Client - Server</span>
+                        <span class="skill-chip">ServerSocket</span>
+                        <span class="skill-chip">Bắt gói tin Wireshark</span>
+                        <span class="skill-chip">Giao thức TCP/UDP</span>
+                        <span class="skill-chip">Byte Stream</span>
+                    </div>
+                    <p class="skill-detail-text">Hiểu rõ cơ chế bắt tay 3 bước, truyền nhận dữ liệu mảng byte qua mạng, tối ưu bộ đệm tránh suy hao chất lượng khi truyền stream ảnh.</p>
+                </div>
+
+                <!-- Thẻ 3 -->
+                <div class="glass-card skill-card">
+                    <div class="skill-card-head">
+                        <div class="skill-icon-box"><i class="fas fa-database"></i></div>
+                        <h3>Dữ Liệu & Web Căn Bản</h3>
+                    </div>
+                    <div class="skill-chips-wrap">
+                        <span class="skill-chip">HTML5 Semantic</span>
+                        <span class="skill-chip">CSS3 Grid & Flexbox</span>
+                        <span class="skill-chip">JavaScript ES6+ DOM</span>
+                        <span class="skill-chip">MySQL / SQL</span>
+                    </div>
+                    <p class="skill-detail-text">Xây dựng giao diện web chuẩn Semantic, Responsive mượt mà không dùng thư viện rườm rà; thiết kế CSDL quan hệ chuẩn 3NF và viết câu truy vấn CRUD tối ưu.</p>
+                </div>
+
+                <!-- Thẻ 4 -->
+                <div class="glass-card skill-card">
+                    <div class="skill-card-head">
+                        <div class="skill-icon-box"><i class="fas fa-tools"></i></div>
+                        <h3>Công Cụ & Quy Trình Kỹ Sư</h3>
+                    </div>
+                    <div class="skill-chips-wrap">
+                        <span class="skill-chip"><i class="fab fa-git-alt"></i> Git / GitHub</span>
+                        <span class="skill-chip">IntelliJ IDEA</span>
+                        <span class="skill-chip">VS Code</span>
+                        <span class="skill-chip">PowerShell</span>
+                        <span class="skill-chip">Postman</span>
+                    </div>
+                    <p class="skill-detail-text">Sử dụng Git phân nhánh quản lý mã nguồn nhóm, kiểm soát commit chuẩn hóa và sử dụng IDE chuyên sâu để gỡ lỗi nhanh chóng.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: DỰ ÁN CÁ NHÂN & ĐỒ ÁN MÔN HỌC (Tiêu chí 6 & Tiêu chí 14) -->
+        <section id="projects" class="content-section">
+            <div class="section-head">
+                <span class="section-tag"><i class="fas fa-layer-group"></i> Sản phẩm thực tế</span>
+                <h2 class="section-title">Dự Án Cá Nhân Tiêu Biểu</h2>
+                <p class="section-subtitle">Tối thiểu 3 dự án thực chiến gồm mô tả, công nghệ, bài học và link mã nguồn.</p>
+            </div>
+
+            <!-- Bộ lọc dự án JavaScript (Tiêu chí 14) -->
+            <div class="filter-tabs">
+                <button type="button" class="tab-btn active" data-filter="all">Tất cả dự án (3)</button>
+                <button type="button" class="tab-btn" data-filter="network">Lập trình Mạng</button>
+                <button type="button" class="tab-btn" data-filter="java">Java OOP</button>
+                <button type="button" class="tab-btn" data-filter="web">Lập trình Web</button>
+            </div>
+
+            <!-- Lưới dự án -->
+            <div class="projects-grid">
+                <!-- Dự Án 1: Remote Desktop -->
+                <div class="glass-card project-card" data-category="network">
+                    <div>
+                        <div class="project-top-tag">
+                            <span class="course-badge">Mạng Máy Tính</span>
+                            <i class="fas fa-desktop project-icon-top"></i>
+                        </div>
+                        <h3 class="project-title">Remote Desktop Application</h3>
+                        <p class="project-desc">
+                            Ứng dụng điều khiển máy tính từ xa Client - Server qua Socket TCP. Tự động chụp màn hình, nén mảng byte truyền phát mượt mà và đồng bộ điều khiển chuột, bàn phím theo thời gian thực.
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag-pill">Java SE 21</span>
+                            <span class="tech-tag-pill">Socket TCP</span>
+                            <span class="tech-tag-pill">Multithreading</span>
+                            <span class="tech-tag-pill">Buffer Stream</span>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="btn-sm-primary" onclick="openProjectModal('remote-desktop')">
+                            <i class="fas fa-info-circle"></i> Chi tiết
+                        </button>
+                        <a href="https://github.com/voductin789789" target="_blank" class="btn-sm-outline" title="GitHub">
+                            <i class="fab fa-github"></i> Mã nguồn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dự Án 2: Quản Lý Metro -->
+                <div class="glass-card project-card" data-category="java">
+                    <div>
+                        <div class="project-top-tag">
+                            <span class="course-badge">Java Hướng Đối Tượng</span>
+                            <i class="fas fa-subway project-icon-top"></i>
+                        </div>
+                        <h3 class="project-title">Quản Lý Tuyến Tàu Metro</h3>
+                        <p class="project-desc">
+                            Phần mềm số hóa lịch trình vận hành các trạm ga, tính toán cước phí và phát hành vé điện tử. Xây dựng phân lớp bài bản theo trọn vẹn 4 đặc tính OOP (Kế thừa, Đa hình, Đóng gói, Trừu tượng).
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag-pill">Java OOP</span>
+                            <span class="tech-tag-pill">Collections</span>
+                            <span class="tech-tag-pill">File I/O</span>
+                            <span class="tech-tag-pill">Exception Handling</span>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="btn-sm-primary" onclick="openProjectModal('metro-management')">
+                            <i class="fas fa-info-circle"></i> Chi tiết
+                        </button>
+                        <a href="https://github.com/voductin789789" target="_blank" class="btn-sm-outline" title="GitHub">
+                            <i class="fab fa-github"></i> Mã nguồn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Dự Án 3: Web Portal Nhóm 9 -->
+                <div class="glass-card project-card" data-category="web">
+                    <div>
+                        <div class="project-top-tag">
+                            <span class="course-badge">Lập Trình Web UTH</span>
+                            <i class="fas fa-globe project-icon-top"></i>
+                        </div>
+                        <h3 class="project-title">Portfolio & Web Portal Nhóm 9</h3>
+                        <p class="project-desc">
+                            Trang web giới thiệu 6 thành viên nhóm và Portfolio cá nhân với thiết kế Dark Glassmorphism cao cấp, tương tác DOM thuần, Dark Mode, Modal popup và Form kiểm tra dữ liệu chặt chẽ.
+                        </p>
+                        <div class="project-tech-tags">
+                            <span class="tech-tag-pill">HTML5 Semantic</span>
+                            <span class="tech-tag-pill">CSS3 Glassmorphism</span>
+                            <span class="tech-tag-pill">JavaScript ES6+</span>
+                            <span class="tech-tag-pill">Responsive</span>
+                        </div>
+                    </div>
+                    <div class="project-actions">
+                        <button type="button" class="btn-sm-primary" onclick="openProjectModal('group-portal')">
+                            <i class="fas fa-info-circle"></i> Chi tiết
+                        </button>
+                        <a href="index.html" class="btn-sm-outline" title="Cổng nhóm">
+                            <i class="fas fa-users"></i> Cổng nhóm 9
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: HỌC VẤN / CHỨNG CHỈ / SỞ THÍCH (Tiêu chí 5 & 7) -->
+        <section id="roadmap" class="content-section">
+            <div class="section-head">
+                <span class="section-tag"><i class="fas fa-graduation-cap"></i> Học vấn & Mốc son</span>
+                <h2 class="section-title">Lộ Trình Đào Tạo & Hoạt Động</h2>
+                <p class="section-subtitle">Quá trình tích lũy kiến thức tại giảng đường UTH và mục tiêu tương lai.</p>
+            </div>
+
+            <div class="roadmap-grid">
+                <!-- Cột Timeline Học Vấn -->
+                <div class="glass-card timeline-panel">
+                    <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 24px; color: var(--text-primary);">
+                        <i class="fas fa-university"></i> Quá Trình Học Tập
+                    </h3>
+
+                    <div class="timeline-list">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-year">2024 — HIỆN TẠI</div>
+                            <h4 class="timeline-title">Đại Học Giao Thông Vận Tải TP.HCM (UTH)</h4>
+                            <div class="timeline-sub">Khoa Công nghệ Thông tin • Hệ Chính quy K24</div>
+                            <p class="timeline-desc">
+                                Tích lũy kiến thức nền tảng vững chắc: Cấu trúc dữ liệu & giải thuật, Lập trình hướng đối tượng Java, Mạng máy tính và Hệ cơ sở dữ liệu quan hệ.
+                            </p>
+                        </div>
+
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-year">MỤC TIÊU 2026</div>
+                            <h4 class="timeline-title">Thực Tập Sinh Backend (Software Engineer Intern)</h4>
+                            <div class="timeline-sub">Doanh nghiệp Công nghệ Phần mềm</div>
+                            <p class="timeline-desc">
+                                Tham gia cọ xát với các dự án thực tế, thực hành quy trình CI/CD, viết Unit Test và đóng góp vào các dịch vụ Backend chịu tải cao.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cột Chứng Chỉ & Sở Thích -->
+                <div class="side-boxes">
+                    <div class="glass-card side-box">
+                        <span class="side-box-tag"><i class="fas fa-award"></i> Chứng chỉ & Ngoại ngữ</span>
+                        <h4 class="side-box-title">Tiếng Anh Kỹ Thuật (TOEIC)</h4>
+                        <p class="side-box-desc">
+                            Hiện đang tích cực rèn luyện từ vựng và ngữ pháp chuyên ngành, hướng tới mục tiêu đạt chứng chỉ TOEIC phục vụ trực tiếp cho việc đọc hiểu tài liệu và giao tiếp chuyên môn.
+                        </p>
+                    </div>
+
+                    <div class="glass-card side-box">
+                        <span class="side-box-tag"><i class="fas fa-heart"></i> Sở thích & Đời sống</span>
+                        <h4 class="side-box-title">Thể Thao, Hoạt Động & Ẩm Thực</h4>
+                        <p class="side-box-desc">
+                            Ngoài giờ học, mình thích chơi thể thao để vận động và nạp năng lượng, tham gia các hoạt động vui cùng bạn bè, khám phá những nơi mới và thưởng thức các món ăn ngon. Những trải nghiệm ấy giúp mình thư giãn và có thêm nhiều kỷ niệm đáng nhớ.
+                        </p>
+                        <div class="hobby-chips" aria-label="Sở thích cá nhân">
+                            <span class="hobby-chip"><i class="fas fa-volleyball-ball"></i> Chơi thể thao</span>
+                            <span class="hobby-chip"><i class="fas fa-users"></i> Hoạt động cùng bạn bè</span>
+                            <span class="hobby-chip"><i class="fas fa-utensils"></i> Khám phá món ngon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 6: FORM LIÊN HỆ CÓ VALIDATE JS (Tiêu chí 15) -->
+        <section id="contact" class="content-section">
+            <div class="section-head">
+                <span class="section-tag"><i class="fas fa-paper-plane"></i> Kết nối</span>
+                <h2 class="section-title">Kênh Liên Hệ & Gửi Thông Điệp</h2>
+                <p class="section-subtitle">Sẵn sàng trao đổi về cơ hội học tập, thảo luận đồ án hoặc các đề xuất hợp tác.</p>
+            </div>
+
+            <div class="contact-grid">
+                <!-- Cột thông tin liên lạc -->
+                <div class="glass-card contact-info-panel">
+                    <h3>Thông Tin Trực Tiếp</h3>
+                    <p>
+                        Bạn có thể liên hệ trực tiếp với mình qua email sinh viên, mạng xã hội hoặc để lại lời nhắn qua form bên cạnh.
+                    </p>
+
+                    <div class="contact-channel-list">
+                        <a href="mailto:voductin789@gmail.com" class="channel-link">
+                            <i class="fas fa-envelope"></i>
+                            <span>voductin789@gmail.com</span>
+                        </a>
+                        <a href="tel:0328860849" class="channel-link">
+                            <i class="fas fa-phone"></i>
+                            <span>0328 860 849</span>
+                        </a>
+                        <a href="https://github.com/voductin789789" target="_blank" class="channel-link">
+                            <i class="fab fa-github"></i>
+                            <span>github.com/voductin789789</span>
+                        </a>
+                        <a href="index.html" class="channel-link">
+                            <i class="fas fa-users"></i>
+                            <span>Trang Giới Thiệu Nhóm 9 (UTH)</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Cột Form Liên Hệ (Validate bằng JavaScript) -->
+                <div class="glass-card form-panel">
+                    <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 20px; color: var(--text-primary);">
+                        <i class="fas fa-comment-dots"></i> Gửi Tin Nhắn Nhanh
+                    </h3>
+
+                    <div class="form-success-alert" id="formSuccessAlert">
+                        <i class="fas fa-check-circle"></i> Cảm ơn bạn! Tin nhắn đã được gửi thành công đến Võ Đức Tín.
+                    </div>
+
+                    <form id="contactForm" novalidate>
+                        <div class="form-group" id="groupName">
+                            <label for="senderName" class="form-label">Họ và tên của bạn *</label>
+                            <input type="text" id="senderName" class="form-input" placeholder="Ví dụ: Nguyễn Văn A">
+                            <span class="form-error">Vui lòng nhập họ tên của bạn (tối thiểu 2 ký tự).</span>
+                        </div>
+
+                        <div class="form-group" id="groupEmail">
+                            <label for="senderEmail" class="form-label">Email liên hệ *</label>
+                            <input type="email" id="senderEmail" class="form-input" placeholder="email@example.com">
+                            <span class="form-error">Vui lòng nhập đúng định dạng email (ví dụ: email@domain.com).</span>
+                        </div>
+
+                        <div class="form-group" id="groupSubject">
+                            <label for="emailSubject" class="form-label">Tiêu đề tin nhắn *</label>
+                            <input type="text" id="emailSubject" class="form-input" placeholder="Ví dụ: Trao đổi về đồ án Java / Cơ hội thực tập">
+                            <span class="form-error">Vui lòng nhập tiêu đề tin nhắn.</span>
+                        </div>
+
+                        <div class="form-group" id="groupMessage">
+                            <label for="messageBody" class="form-label">Nội dung trao đổi *</label>
+                            <textarea id="messageBody" rows="4" class="form-textarea" placeholder="Nhập nội dung bạn muốn gửi..."></textarea>
+                            <span class="form-error">Vui lòng nhập nội dung chi tiết (tối thiểu 10 ký tự).</span>
+                        </div>
+
+                        <button type="submit" class="btn-glow" style="width: 100%; justify-content: center; cursor: pointer; border: none; font-size: 0.95rem; padding: 14px;">
+                            <span>Gửi Tin Nhắn Ngay</span> <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer-wrap">
+            <p>© 2026 Võ Đức Tín • Nhóm 9 • Đại Học Giao Thông Vận Tải TP.HCM (UTH) <span class="heart"><i class="fas fa-heart"></i></span></p>
+        </footer>
+    </div>
+
+    <!-- Modal Xem Chi Tiết Dự Án (Chức năng tương tác Modal) -->
+    <div class="modal-overlay" id="projectModal">
+        <div class="modal-card">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn">&times;</button>
+            <h3 id="modalTitle" style="font-size: 1.5rem; font-weight: 800; margin-bottom: 12px; color: var(--text-primary);">Tên Dự Án</h3>
+            <p id="modalDesc" style="font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 22px; line-height: 1.7;">Mô tả dự án...</p>
+            <div id="modalContent"></div>
+            <div style="margin-top: 26px; text-align: right;">
+                <button type="button" class="btn-outline-glass" onclick="closeProjectModal()" style="cursor: pointer;">Đóng cửa sổ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main JavaScript -->
+    <script src="main-portfolio.js"></script>
+</body>
+
+</html>
