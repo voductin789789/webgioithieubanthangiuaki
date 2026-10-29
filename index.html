@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -104,15 +105,30 @@
         }
 
         .header {
+            position: relative;
+            overflow: hidden;
             text-align: center;
-            padding: 45px 25px;
-            margin-bottom: 45px;
-            background: rgba(255, 255, 255, 0.03);
+            padding: 54px 25px;
+            margin-bottom: 38px;
+            background: linear-gradient(145deg, rgba(99, 102, 241, 0.11), rgba(255, 255, 255, 0.025) 48%, rgba(6, 182, 212, 0.07));
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--radius-lg);
             border: 1px solid var(--card-border);
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            top: -190px;
+            left: calc(50% - 140px);
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.3);
+            filter: blur(70px);
+            pointer-events: none;
         }
 
         .badge-tag {
@@ -128,10 +144,12 @@
             font-weight: 600;
             letter-spacing: 0.5px;
             margin-bottom: 16px;
+            position: relative;
         }
 
         .header h1 {
-            font-size: 3.2em;
+            position: relative;
+            font-size: clamp(2.6em, 6vw, 4em);
             font-weight: 800;
             letter-spacing: -1px;
             margin-bottom: 12px;
@@ -144,7 +162,8 @@
             color: var(--text-secondary);
             font-size: 1.05em;
             max-width: 600px;
-            margin: 0 auto 25px;
+            margin: 0 auto 30px;
+            position: relative;
         }
 
         .team-stats {
@@ -198,8 +217,11 @@
             -webkit-backdrop-filter: blur(18px);
             border-radius: var(--radius-lg);
             border: 1px solid var(--card-border);
-            padding: 32px 24px;
+            padding: 34px 24px;
+            min-height: 350px;
             text-align: center;
+            color: inherit;
+            text-decoration: none;
             cursor: pointer;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
@@ -368,8 +390,15 @@
             color: var(--text-primary);
             font-size: 0.88em;
             font-weight: 600;
+            font-family: inherit;
             transition: all 0.3s ease;
             margin-top: auto;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        #modalPortfolioWrap[hidden] {
+            display: none;
         }
 
         .member-card:hover .view-btn {
@@ -635,22 +664,31 @@
             display: inline-block;
         }
 
+        .view-btn:focus-visible,
+        .modal-close-btn:focus-visible,
+        .modal-social-btn:focus-visible {
+            outline: 3px solid #a5b4fc;
+            outline-offset: 4px;
+        }
+
         @media (max-width: 768px) {
             body {
                 padding: 20px 14px 40px;
             }
 
             .header {
-                padding: 30px 18px;
-            }
-
-            .header h1 {
-                font-size: 2.2em;
+                padding: 38px 18px;
+                margin-bottom: 24px;
             }
 
             .members-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+
+            .member-card {
+                min-height: 330px;
+                padding: 30px 18px;
             }
 
             .modal-header-content {
@@ -673,6 +711,28 @@
                 justify-content: center;
             }
         }
+
+        @media (max-width: 560px) {
+            .members-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .member-card {
+                min-height: 320px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                scroll-behavior: auto !important;
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
     </style>
 </head>
 
@@ -685,50 +745,35 @@
 
     <div class="container">
         <header class="header">
-            <span class="badge-tag">
-                <i class="fas fa-layer-group"></i> Dự Án Giữa Kỳ • Môn Lập Trình Web
-            </span>
+            <span class="badge-tag"><i class="fas fa-layer-group"></i> Dự Án Giữa Kỳ • Môn Lập Trình Web</span>
             <h1>Nhóm 9</h1>
-            <p class="subtitle">
-                Chào mừng bạn đến với trang giới thiệu Nhóm 9. Nhấn vào từng thành viên để xem toàn bộ thông tin chi
-                tiết.
-            </p>
+            <p class="subtitle">Chào mừng bạn đến với trang giới thiệu Nhóm 9. Nhấn vào từng thành viên để xem toàn bộ
+                thông tin chi tiết.</p>
             <div class="team-stats">
-                <div class="stat-item">
-                    <span class="stat-number">Nhóm 9</span>
-                    <span class="stat-label">Tên nhóm</span>
+                <div class="stat-item"><span class="stat-number">Nhóm 9</span><span class="stat-label">Tên nhóm</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">06</span>
-                    <span class="stat-label">Thành viên</span>
+                <div class="stat-item"><span class="stat-number">06</span><span class="stat-label">Thành viên</span>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-number">100%</span>
-                    <span class="stat-label">Nhiệt huyết</span>
+                <div class="stat-item"><span class="stat-number">100%</span><span class="stat-label">Nhiệt huyết</span>
                 </div>
             </div>
         </header>
 
         <main class="members-grid">
             <!-- Thành Viên 1 -->
-            <div class="member-card" data-theme="indigo" onclick="openMemberModal(0)">
+            <a class="member-card" data-theme="indigo" href="vo-duc-tin.html">
                 <div class="avatar-box">
                     <img src="tin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar-placeholder">
-                        <i class="fas fa-user"></i>
-                        <span>Thêm ảnh</span>
-                    </div>
+                    <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
                     <span class="status-dot"></span>
                 </div>
                 <h2 class="member-name">Võ Đức Tín</h2>
                 <span class="role-pill">Trưởng Nhóm</span>
-                <button class="view-btn" type="button">
-                    <span>Xem chi tiết</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
+                <span class="view-btn"><span>Xem chi tiết</span><i
+                        class="fas fa-arrow-right"></i></span>
+            </a>
 
             <!-- Thành Viên 2 -->
             <div class="member-card" data-theme="cyan" onclick="openMemberModal(1)">
@@ -736,18 +781,13 @@
                     <img src="vantin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar-placeholder">
-                        <i class="fas fa-user"></i>
-                        <span>Thêm ảnh</span>
-                    </div>
+                    <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
                     <span class="status-dot"></span>
                 </div>
                 <h2 class="member-name">Võ Văn Tín</h2>
-                <span class="role-pill">Thành </span>
-                <button class="view-btn" type="button">
-                    <span>Xem chi tiết</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+                <span class="role-pill">Thành viên</span>
+                <button class="view-btn" type="button"><span>Xem chi tiết</span><i
+                        class="fas fa-arrow-right"></i></button>
             </div>
 
             <!-- Thành Viên 3 -->
@@ -756,18 +796,13 @@
                     <img src="avatar.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar-placeholder">
-                        <i class="fas fa-user"></i>
-                        <span>Thêm ảnh</span>
-                    </div>
+                    <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
                     <span class="status-dot"></span>
                 </div>
                 <h2 class="member-name">DƯƠNG CHÍ TOÀN</h2>
                 <span class="role-pill">Backend Developer</span>
-                <button class="view-btn" type="button">
-                    <span>Xem chi tiết</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+                <button class="view-btn" type="button"><span>Xem chi tiết</span><i
+                        class="fas fa-arrow-right"></i></button>
             </div>
 
             <!-- Thành Viên 4 -->
@@ -776,18 +811,13 @@
                     <img src="thanhvien4.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar-placeholder">
-                        <i class="fas fa-user"></i>
-                        <span>Thêm ảnh</span>
-                    </div>
+                    <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
                     <span class="status-dot"></span>
                 </div>
                 <h2 class="member-name">Thành Viên 4</h2>
                 <span class="role-pill">UI/UX Designer</span>
-                <button class="view-btn" type="button">
-                    <span>Xem chi tiết</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+                <button class="view-btn" type="button"><span>Xem chi tiết</span><i
+                        class="fas fa-arrow-right"></i></button>
             </div>
 
             <!-- Thành Viên 5 -->
@@ -796,18 +826,13 @@
                     <img src="thanhvien5.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar-placeholder">
-                        <i class="fas fa-user"></i>
-                        <span>Thêm ảnh</span>
-                    </div>
+                    <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
                     <span class="status-dot"></span>
                 </div>
                 <h2 class="member-name">Thành Viên 5</h2>
                 <span class="role-pill">Fullstack Developer</span>
-                <button class="view-btn" type="button">
-                    <span>Xem chi tiết</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+                <button class="view-btn" type="button"><span>Xem chi tiết</span><i
+                        class="fas fa-arrow-right"></i></button>
             </div>
 
             <!-- Thành Viên 6 -->
@@ -816,18 +841,13 @@
                     <img src="manh.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
-                    <div class="avatar-placeholder">
-                        <i class="fas fa-user"></i>
-                        <span>Thêm ảnh</span>
-                    </div>
+                    <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
                     <span class="status-dot"></span>
                 </div>
-                <h2 class="member-name">Thành Viên 6</h2>
+                <h2 class="member-name">Huỳnh Đoàn Quang Mạnh</h2>
                 <span class="role-pill">Thành viên</span>
-                <button class="view-btn" type="button">
-                    <span>Xem chi tiết</span>
-                    <i class="fas fa-arrow-right"></i>
-                </button>
+                <button class="view-btn" type="button"><span>Xem chi tiết</span><i
+                        class="fas fa-arrow-right"></i></button>
             </div>
         </main>
 
@@ -837,11 +857,13 @@
         </footer>
     </div>
 
+    <!-- MODAL POPUP (ĐÃ ĐƯỢC LÀM SẠCH) -->
     <div class="modal-overlay" id="memberModal" onclick="handleOverlayClick(event)">
         <div class="modal-box" id="modalBox">
             <button class="modal-close-btn" onclick="closeMemberModal()" type="button" title="Đóng">
                 <i class="fas fa-times"></i>
             </button>
+
             <div class="modal-banner" id="modalBanner"></div>
             <div class="modal-header-content">
                 <div class="modal-avatar-box">
@@ -852,39 +874,26 @@
                     <span class="modal-role" id="modalRole">Vai Trò</span>
                 </div>
             </div>
+
             <div class="modal-body">
-                <div class="modal-bio-box" id="modalBio">
-                    Phần giới thiệu bản thân sẽ hiển thị chi tiết tại đây khi bạn bấm vào từng người.
-                </div>
+                <div class="modal-bio-box" id="modalBio">Phần giới thiệu bản thân sẽ hiển thị chi tiết tại đây.</div>
 
                 <div>
-                    <div class="modal-section-title">
-                        <i class="fas fa-laptop-code"></i> Kỹ năng & Chuyên môn
-                    </div>
+                    <div class="modal-section-title"><i class="fas fa-laptop-code"></i> Kỹ năng & Chuyên môn</div>
                     <div class="modal-skills-list" id="modalSkills"></div>
                 </div>
 
                 <div>
-                    <div class="modal-section-title">
-                        <i class="fas fa-user-graduate"></i> Thông tin cá nhân
-                    </div>
+                    <div class="modal-section-title"><i class="fas fa-user-graduate"></i> Thông tin cá nhân</div>
                     <div class="modal-info-grid">
-                        <div class="modal-info-item">
-                            <i class="fas fa-book"></i>
-                            <span id="modalMajor">Chuyên ngành: Công nghệ thông tin</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <i class="fas fa-school"></i>
-                            <span id="modalSchool">Trường: Đại học [Điền tên trường]</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <i class="fas fa-envelope"></i>
-                            <span id="modalEmail">Email: email@example.com</span>
-                        </div>
-                        <div class="modal-info-item">
-                            <i class="fas fa-quote-left"></i>
-                            <span id="modalQuote">Châm ngôn: "Cố gắng hết mình"</span>
-                        </div>
+                        <div class="modal-info-item"><i class="fas fa-book"></i><span id="modalMajor">Chuyên ngành: Công
+                                nghệ thông tin</span></div>
+                        <div class="modal-info-item"><i class="fas fa-school"></i><span id="modalSchool">Trường: Đại học
+                                [Điền tên trường]</span></div>
+                        <div class="modal-info-item"><i class="fas fa-envelope"></i><span id="modalEmail">Email:
+                                email@example.com</span></div>
+                        <div class="modal-info-item"><i class="fas fa-quote-left"></i><span id="modalQuote">Châm ngôn:
+                                "Cố gắng hết mình"</span></div>
                     </div>
                 </div>
 
@@ -894,6 +903,13 @@
                     <a href="#" class="modal-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="modal-social-btn" title="Email"><i class="fas fa-envelope"></i></a>
                 </div>
+
+                <div id="modalPortfolioWrap" style="margin-top: 20px; text-align: center;" hidden>
+                    <a id="modalWebPortfolioLink" href="#" class="view-btn"
+                        style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; border: none; font-weight: 700; border-radius: 12px; padding: 14px;">
+                        <span><i class="fas fa-external-link-alt"></i> Khám Phá Website Riêng Của Thành Viên Này</span>
+                    </a>
+                </div>
             </div>
         </div>
     </div>
@@ -901,100 +917,58 @@
     <script>
         const membersData = [
             {
-                name: "Võ Đức Tín",
-                role: "Trưởng Nhóm",
-                avatar: "tin.jpg",
-                theme: "linear-gradient(135deg, #4f46e5, #7c3aed)",
-                accent: "#818cf8",
+                name: "Võ Đức Tín", portfolioUrl: "vo-duc-tin.html", role: "Trưởng Nhóm", avatar: "tin.jpg",
+                theme: "linear-gradient(135deg, #4f46e5, #7c3aed)", accent: "#818cf8",
                 bio: "Chào mọi người, mình là Trưởng nhóm 9! Mình thích lập trình web, thiết kế hệ thống và cùng các thành viên hoàn thành thật tốt bài tập giữa kỳ này.",
                 skills: ["HTML / CSS", "JavaScript", "React", "Node.js", "Git"],
-                major: "Chuyên ngành: Công nghệ thông tin",
-                school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
-                email: "Email: voductin789@gmail.com",
-                quote: "Châm ngôn: Học hỏi mỗi ngày để tiến bộ hơn",
-                facebook: "Võ Đức Tín",
-                github: "voductin789789",
-                linkedin: "#"
+                major: "Chuyên ngành: Công nghệ thông tin", school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
+                email: "Email: voductin789@gmail.com", quote: "Châm ngôn: Học hỏi mỗi ngày để tiến bộ hơn",
+                facebook: "Võ Đức Tín", github: "voductin789789", linkedin: "#"
             },
             {
-                name: "Võ Văn Tín",
-                role: "Thành Viên",
-                avatar: "vantin.jpg",
-                theme: "linear-gradient(135deg, #0284c7, #0d9488)",
-                accent: "#38bdf8",
+                name: "Võ Văn Tín", portfolioUrl: "#", role: "Thành Viên", avatar: "vantin.jpg",
+                theme: "linear-gradient(135deg, #0284c7, #0d9488)", accent: "#38bdf8",
                 bio: "Phụ trách phát triển giao diện người dùng, đảm bảo website hiển thị trực quan, mượt mà và tương thích tốt trên mọi thiết bị.",
                 skills: ["HTML5", "CSS3 / Sass", "JavaScript", "Bootstrap", "Responsive Web"],
-                major: "Chuyên ngành: Công nghệ thông tin",
-                school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
-                email: "Email: vovantin446@gmail.com",
-                quote: "Châm ngôn: Giao diện trực quan tạo nên trải nghiệm người dùng tuyệt vời",
-                facebook: "Võ Văn Tín",
-                github: "vovantin446",
-                linkedin: "#"
+                major: "Chuyên ngành: Công nghệ thông tin", school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
+                email: "Email: vovantin446@gmail.com", quote: "Châm ngôn: Giao diện trực quan tạo nên trải nghiệm người dùng tuyệt vời",
+                facebook: "Võ Văn Tín", github: "vovantin446", linkedin: "#"
             },
             {
-                name: "DƯƠNG CHÍ TOÀN",
-                role: "Backend Developer",
-                avatar: "avatar.jpg",
-                theme: "linear-gradient(135deg, #7c3aed, #c026d3)",
-                accent: "#c084fc",
+                name: "DƯƠNG CHÍ TOÀN", portfolioUrl: "#", role: "Backend Developer", avatar: "avatar.jpg",
+                theme: "linear-gradient(135deg, #7c3aed, #c026d3)", accent: "#c084fc",
                 bio: "Mình là Dương Chí Toàn, hiện đang theo học ngành Công nghệ thông tin. Mình yêu thích lập trình Backend, xây dựng REST API, thiết kế cơ sở dữ liệu và phát triển các ứng dụng thực tế.",
                 skills: ["Node.js", "Git", "MySQL", "REST API", "Docker"],
-                major: "Chuyên ngành: Công nghệ thông tin",
-                school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
-                email: "Email: chitoan10a2@gmail.com",
-                quote: "Châm ngôn: Nền tảng vững chắc tạo nên sản phẩm bền vững",
-                facebook: "#",
-                github: "https://github.com/chitoan-dot",
-                linkedin: "#"
+                major: "Chuyên ngành: Công nghệ thông tin", school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
+                email: "Email: chitoan10a2@gmail.com", quote: "Châm ngôn: Nền tảng vững chắc tạo nên sản phẩm bền vững",
+                facebook: "#", github: "https://github.com/chitoan-dot", linkedin: "#"
             },
             {
-                name: "Thành Viên 4",
-                role: "UI/UX Designer",
-                avatar: "thanhvien4.jpg",
-                theme: "linear-gradient(135deg, #d97706, #ea580c)",
-                accent: "#fbbf24",
+                name: "Thành Viên 4", portfolioUrl: "#", role: "UI/UX Designer", avatar: "thanhvien4.jpg",
+                theme: "linear-gradient(135deg, #d97706, #ea580c)", accent: "#fbbf24",
                 bio: "Chuyên tâm vào nghiên cứu hành vi người dùng, phối màu sắc và thiết kế các chi tiết giao diện theo phong cách hiện đại.",
                 skills: ["Figma", "UI/UX Design", "Wireframing", "Color Theory", "Prototyping"],
-                major: "Chuyên ngành: Công nghệ thông tin",
-                school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
-                email: "Email: thanhvien4@example.com",
-                quote: "Châm ngôn: Đơn giản nhưng tinh tế là đỉnh cao của thiết kế",
-                facebook: "#",
-                github: "#",
-                linkedin: "#"
+                major: "Chuyên ngành: Công nghệ thông tin", school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
+                email: "Email: thanhvien4@example.com", quote: "Châm ngôn: Đơn giản nhưng tinh tế là đỉnh cao của thiết kế",
+                facebook: "#", github: "#", linkedin: "#"
             },
             {
-                name: "Thành Viên 5",
-                role: "Fullstack Developer",
-                avatar: "thanhvien5.jpg",
-                theme: "linear-gradient(135deg, #059669, #0d9488)",
-                accent: "#34d399",
+                name: "Thành Viên 5", portfolioUrl: "#", role: "Fullstack Developer", avatar: "thanhvien5.jpg",
+                theme: "linear-gradient(135deg, #059669, #0d9488)", accent: "#34d399",
                 bio: "Hỗ trợ kết nối giữa giao diện người dùng và hệ thống phía sau, tối ưu hiệu năng và kiểm thử mã nguồn liên tục.",
                 skills: ["JavaScript", "React", "Node.js", "MongoDB", "Git Workflow"],
-                major: "Chuyên ngành: Công nghệ thông tin",
-                school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
-                email: "Email: thanhvien5@example.com",
-                quote: "Châm ngôn: Không ngừng học hỏi để vượt qua mọi thách thức kỹ thuật",
-                facebook: "#",
-                github: "#",
-                linkedin: "#"
+                major: "Chuyên ngành: Công nghệ thông tin", school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
+                email: "Email: thanhvien5@example.com", quote: "Châm ngôn: Không ngừng học hỏi để vượt qua mọi thách thức kỹ thuật",
+                facebook: "#", github: "#", linkedin: "#"
             },
             {
-                name: "Huỳnh Đoàn Quang Mạnh",
-                role: "Thành viên",
-                avatar: "manh.jpg",
-                theme: "linear-gradient(135deg, #e11d48, #db2777)",
-                accent: "#fb7185",
-                bio: "xin chào mọi người mình là Huỳnh Đoàn Quang Mạnh, thành viên nhóm 9, mình thích code hệ thống web và nỗ lực với nhóm hết mình.",
+                name: "Huỳnh Đoàn Quang Mạnh", portfolioUrl: "#", role: "Thành viên", avatar: "manh.jpg",
+                theme: "linear-gradient(135deg, #e11d48, #db2777)", accent: "#fb7185",
+                bio: "Xin chào mọi người mình là Huỳnh Đoàn Quang Mạnh, thành viên nhóm 9, mình thích code hệ thống web và nỗ lực với nhóm hết mình.",
                 skills: ["Manual Testing", "Test Case Design", "Postman", "Bug Reporting", "Technical Writing"],
-                major: "Chuyên ngành: Công nghệ thông tin",
-                school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
-                email: "Email: quangmanh01032006@gmail.com",
-                quote: "Châm ngôn: Tỉ mỉ và kiên trì là chìa khóa của sự hoàn hảo",
-                facebook: "Quang Manh",
-                github: "quangmanh1801",
-                linkedin: "#"
+                major: "Chuyên ngành: Công nghệ thông tin", school: "Trường: Đại Học Giao Thông Vận Tải TPHCM",
+                email: "Email: quangmanh01032006@gmail.com", quote: "Châm ngôn: Tỉ mỉ và kiên trì là chìa khóa của sự hoàn hảo",
+                facebook: "Quang Manh", github: "quangmanh1801", linkedin: "#"
             }
         ];
 
@@ -1016,15 +990,21 @@
             document.getElementById('modalEmail').textContent = data.email;
             document.getElementById('modalQuote').textContent = data.quote;
 
+            const portfolioLink = document.getElementById('modalWebPortfolioLink');
+            const portfolioWrap = document.getElementById('modalPortfolioWrap');
+            if (portfolioLink && portfolioWrap) {
+                const hasPortfolio = Boolean(data.portfolioUrl && data.portfolioUrl !== '#');
+                portfolioWrap.hidden = !hasPortfolio;
+                if (hasPortfolio) portfolioLink.href = data.portfolioUrl;
+                portfolioLink.innerHTML = `<span><i class="fas fa-external-link-alt"></i> Khám Phá Website Của ${data.name}</span>`;
+            }
+
             const cardImg = document.querySelectorAll('.member-card')[index]?.querySelector('.avatar-img');
             const userAvatar = (data.avatar && data.avatar.trim() !== '') ? data.avatar : (cardImg && cardImg.getAttribute('src') ? cardImg.getAttribute('src') : '');
             const avatarEl = document.getElementById('modalAvatar');
-            
+
             const fallbackSvg = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2394a3b8'%3E%3Cpath d='M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z'/%3E%3C/svg%3E";
-            avatarEl.onerror = function () {
-                this.onerror = null;
-                this.src = fallbackSvg;
-            };
+            avatarEl.onerror = function () { this.onerror = null; this.src = fallbackSvg; };
 
             if (userAvatar && userAvatar.trim() !== '') {
                 avatarEl.src = userAvatar;
@@ -1059,9 +1039,7 @@
         }
 
         document.addEventListener('keydown', function (e) {
-            if (e.key === 'Escape') {
-                closeMemberModal();
-            }
+            if (e.key === 'Escape') { closeMemberModal(); }
         });
     </script>
 </body>
