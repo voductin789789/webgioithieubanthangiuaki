@@ -397,9 +397,6 @@
             text-decoration: none;
         }
 
-        #modalPortfolioWrap[hidden] {
-            display: none;
-        }
 
         .member-card:hover .view-btn {
             background: var(--card-gradient);
@@ -733,6 +730,46 @@
                 transition-duration: 0.01ms !important;
             }
         }
+
+        /* Nút Portfolio cạnh các biểu tượng mạng xã hội trong popup */
+        .modal-socials {
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .portfolio-detail-btn {
+            margin-left: auto;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #8b5cf6, #6366f1);
+            color: #fff;
+            text-decoration: none;
+            font: 600 0.88rem 'Plus Jakarta Sans', sans-serif;
+            transition: transform .25s ease, box-shadow .25s ease;
+        }
+        .portfolio-detail-btn:hover:not(.unavailable) {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, .35);
+        }
+        .portfolio-detail-btn.unavailable {
+            opacity: .5;
+            cursor: not-allowed;
+            background: #394154;
+            box-shadow: none;
+        }
+        .portfolio-detail-btn:focus-visible {
+            outline: 3px solid #a5b4fc;
+            outline-offset: 4px;
+        }
+        @media (max-width: 560px) {
+            .portfolio-detail-btn {
+                width: 100%;
+                margin-left: 0;
+            }
+        }
     </style>
 </head>
 
@@ -763,7 +800,7 @@
             <!-- Thành Viên 1 -->
             <a class="member-card" data-theme="indigo" href="vo-duc-tin.html">
                 <div class="avatar-box">
-                    <img src="tin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
+                    <img src="images/tin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
@@ -778,7 +815,7 @@
             <!-- Thành Viên 2 -->
             <a class="member-card" data-theme="cyan" href="vo-van-tin.html">
                 <div class="avatar-box">
-                    <img src="vantin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
+                    <img src="images/van-tin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
@@ -793,14 +830,14 @@
             <!-- Thành Viên 3 -->
             <div class="member-card" data-theme="violet" onclick="openMemberModal(2)">
                 <div class="avatar-box">
-                    <img src="avatar.jpg" alt="Avatar" class="avatar-img" style="display: none;"
+                    <img src="images/Toan.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
                     <span class="status-dot"></span>
                 </div>
                 <h2 class="member-name">DƯƠNG CHÍ TOÀN</h2>
-                <span class="role-pill">Backend Developer</span>
+                <span class="role-pill">Fullstack Developer</span>
                 <button class="view-btn" type="button"><span>Xem chi tiết</span><i
                         class="fas fa-arrow-right"></i></button>
             </div>
@@ -808,7 +845,7 @@
             <!-- Thành Viên 4 -->
             <div class="member-card" data-theme="amber" onclick="openMemberModal(3)">
                 <div class="avatar-box">
-                    <img src="thanhvien4.jpg" alt="Avatar" class="avatar-img" style="display: none;"
+                    <img src="images/viet-thanh.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
@@ -830,7 +867,7 @@
                     <span class="status-dot"></span>
                 </div>
                 <h2 class="member-name">Thành Viên 5</h2>
-                <span class="role-pill">Fullstack Developer</span>
+                <span class="role-pill">Backend Developer</span>
                 <button class="view-btn" type="button"><span>Xem chi tiết</span><i
                         class="fas fa-arrow-right"></i></button>
             </div>
@@ -838,7 +875,7 @@
             <!-- Thành Viên 6 -->
             <div class="member-card" data-theme="rose" onclick="openMemberModal(5)">
                 <div class="avatar-box">
-                    <img src="manh.jpg" alt="Avatar" class="avatar-img" style="display: none;"
+                    <img src="images/manh.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
                         onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
                     <div class="avatar-placeholder"><i class="fas fa-user"></i><span>Thêm ảnh</span></div>
@@ -902,12 +939,10 @@
                     <a href="#" class="modal-social-btn" title="GitHub"><i class="fab fa-github"></i></a>
                     <a href="#" class="modal-social-btn" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" class="modal-social-btn" title="Email"><i class="fas fa-envelope"></i></a>
-                </div>
-
-                <div id="modalPortfolioWrap" style="margin-top: 20px; text-align: center;" hidden>
-                    <a id="modalWebPortfolioLink" href="#" class="view-btn"
-                        style="text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px; background: linear-gradient(135deg, #6366f1, #a855f7); color: #fff; border: none; font-weight: 700; border-radius: 12px; padding: 14px;">
-                        <span><i class="fas fa-external-link-alt"></i> Khám Phá Website Riêng Của Thành Viên Này</span>
+                    <a id="modalWebPortfolioLink" class="portfolio-detail-btn" target="_blank"
+                        rel="noopener noreferrer" aria-label="Xem thông tin chi tiết">
+                        <i class="fas fa-arrow-up-right-from-square"></i>
+                        <span>Xem thông tin chi tiết</span>
                     </a>
                 </div>
             </div>
@@ -917,7 +952,7 @@
     <script>
         const membersData = [
             {
-                name: "Võ Đức Tín", portfolioUrl: "vo-duc-tin.html", role: "Trưởng Nhóm", avatar: "tin.jpg",
+                name: "Võ Đức Tín", portfolioUrl: "vo-duc-tin.html", role: "Trưởng Nhóm", avatar: "images/tin.jpg",
                 theme: "linear-gradient(135deg, #4f46e5, #7c3aed)", accent: "#818cf8",
                 bio: "Chào mọi người, mình là Trưởng nhóm 9! Mình thích lập trình web, thiết kế hệ thống và cùng các thành viên hoàn thành thật tốt bài tập giữa kỳ này.",
                 skills: ["HTML / CSS", "JavaScript", "React", "Node.js", "Git"],
@@ -926,7 +961,7 @@
                 facebook: "Võ Đức Tín", github: "voductin789789", linkedin: "#"
             },
             {
-                name: "Võ Văn Tín", portfolioUrl: "vo-van-tin.html", role: "Thành Viên", avatar: "vantin.jpg",
+                name: "Võ Văn Tín", portfolioUrl: "vo-van-tin.html", role: "Thành Viên", avatar: "images/van-tin.jpg",
                 theme: "linear-gradient(135deg, #0284c7, #0d9488)", accent: "#38bdf8",
                 bio: "Phụ trách phát triển giao diện người dùng, đảm bảo website hiển thị trực quan, mượt mà và tương thích tốt trên mọi thiết bị.",
                 skills: ["HTML5", "CSS3 / Sass", "JavaScript", "Bootstrap", "Responsive Web"],
@@ -935,7 +970,8 @@
                 facebook: "Võ Văn Tín", github: "vovantin446", linkedin: "#"
             },
             {
-                name: "DƯƠNG CHÍ TOÀN", portfolioUrl: "#", role: "Backend Developer", avatar: "avatar.jpg",
+                // TODO: Thay portfolioUrl: "#" bên dưới bằng link https://... của thành viên
+                name: "DƯƠNG CHÍ TOÀN", portfolioUrl: "https://chitoan-dot.github.io/portfolio-reactjs/", role: "Fullstack Developer", avatar: "images/Toan.jpg",
                 theme: "linear-gradient(135deg, #7c3aed, #c026d3)", accent: "#c084fc",
                 bio: "Mình là Dương Chí Toàn, hiện đang theo học ngành Công nghệ thông tin. Mình yêu thích lập trình Backend, xây dựng REST API, thiết kế cơ sở dữ liệu và phát triển các ứng dụng thực tế.",
                 skills: ["Node.js", "Git", "MySQL", "REST API", "Docker"],
@@ -944,7 +980,8 @@
                 facebook: "#", github: "https://github.com/chitoan-dot", linkedin: "#"
             },
             {
-                name: "Hứa An Việt Thành", portfolioUrl: "#", role: "UI/UX Designer", avatar: "vietthanh.jpg",
+                // TODO: Thay portfolioUrl: "#" bên dưới bằng link https://... của thành viên
+                name: "Hứa An Việt Thành", portfolioUrl: "link portfolio cua ban", role: "UI/UX Designer", avatar: "images/viet-thanh.jpg",
                 theme: "linear-gradient(135deg, #d97706, #ea580c)", accent: "#fbbf24",
                 bio: "Chuyên tâm vào nghiên cứu hành vi người dùng, phối màu sắc và thiết kế các chi tiết giao diện theo phong cách hiện đại.",
                 skills: ["Figma", "UI/UX Design", "Wireframing", "Color Theory", "Prototyping"],
@@ -953,7 +990,8 @@
                 facebook: "#", github: "https://github.com/vietthanh1", linkedin: "#"
             },
             {
-                name: "Thành Viên 5", portfolioUrl: "#", role: "Fullstack Developer", avatar: "thanhvien5.jpg",
+                // TODO: Thay portfolioUrl: "#" bên dưới bằng link https://... của thành viên
+                name: "Thành Viên 5", portfolioUrl: "#", role: "Backend Developer", avatar: "thanhvien5.jpg",
                 theme: "linear-gradient(135deg, #059669, #0d9488)", accent: "#34d399",
                 bio: "Hỗ trợ kết nối giữa giao diện người dùng và hệ thống phía sau, tối ưu hiệu năng và kiểm thử mã nguồn liên tục.",
                 skills: ["JavaScript", "React", "Node.js", "MongoDB", "Git Workflow"],
@@ -962,7 +1000,8 @@
                 facebook: "#", github: "#", linkedin: "#"
             },
             {
-                name: "Huỳnh Đoàn Quang Mạnh", portfolioUrl: "#", role: "Thành viên", avatar: "manh.jpg",
+                // TODO: Thay portfolioUrl: "#" bên dưới bằng link https://... của thành viên
+                name: "Huỳnh Đoàn Quang Mạnh", portfolioUrl: "#", role: "Thành viên", avatar: "images/manh.jpg",
                 theme: "linear-gradient(135deg, #e11d48, #db2777)", accent: "#fb7185",
                 bio: "Xin chào mọi người mình là Huỳnh Đoàn Quang Mạnh, thành viên nhóm 9, mình thích code hệ thống web và nỗ lực với nhóm hết mình.",
                 skills: ["Manual Testing", "Test Case Design", "Postman", "Bug Reporting", "Technical Writing"],
@@ -991,12 +1030,22 @@
             document.getElementById('modalQuote').textContent = data.quote;
 
             const portfolioLink = document.getElementById('modalWebPortfolioLink');
-            const portfolioWrap = document.getElementById('modalPortfolioWrap');
-            if (portfolioLink && portfolioWrap) {
-                const hasPortfolio = Boolean(data.portfolioUrl && data.portfolioUrl !== '#');
-                portfolioWrap.hidden = !hasPortfolio;
-                if (hasPortfolio) portfolioLink.href = data.portfolioUrl;
-                portfolioLink.innerHTML = `<span><i class="fas fa-external-link-alt"></i> Khám Phá Website Của ${data.name}</span>`;
+            // Mỗi người dùng liên kết website riêng ở membersData[index].portfolioUrl.
+            // Chưa có URL thì giữ nút hiển thị nhưng không cho điều hướng sai sang GitHub.
+            const portfolioUrl = typeof data.portfolioUrl === 'string' ? data.portfolioUrl.trim() : '';
+            const hasPortfolio = portfolioUrl !== '' && portfolioUrl !== '#';
+            if (hasPortfolio) {
+                portfolioLink.href = portfolioUrl;
+                portfolioLink.classList.remove('unavailable');
+                portfolioLink.removeAttribute('aria-disabled');
+                portfolioLink.title = `Mở Portfolio của ${data.name}`;
+                portfolioLink.querySelector('span').textContent = 'Xem thông tin chi tiết';
+            } else {
+                portfolioLink.removeAttribute('href');
+                portfolioLink.classList.add('unavailable');
+                portfolioLink.setAttribute('aria-disabled', 'true');
+                portfolioLink.title = 'Thành viên chưa cập nhật đường dẫn Portfolio';
+                portfolioLink.querySelector('span').textContent = 'Chưa cập nhật Portfolio';
             }
 
             const cardImg = document.querySelectorAll('.member-card')[index]?.querySelector('.avatar-img');
