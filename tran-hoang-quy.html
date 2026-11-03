@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Hoàng Quý - Backend Developer | Portfolio</title>
+    <meta name="description" content="Portfolio của Trần Hoàng Quý, Backend Developer, sinh viên Công nghệ thông tin, thành viên Nhóm 9.">
+    <meta name="theme-color" content="#0b1118">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%99%EF%B8%8F%3C/text%3E%3C/svg%3E">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        :root {
+            --bg: #0b1118; --panel: #111a24; --panel2: #0e151d;
+            --line: rgba(148, 163, 184, .16);
+            --text: #e6edf3; --muted: #8b9bb0;
+            --green: #34d399; --amber: #fbbf24; --sky: #7dd3fc; --rose: #fb7185;
+            --mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+        body { font-family: 'Plus Jakarta Sans', -apple-system, sans-serif; background: var(--bg); color: var(--text); line-height: 1.7;
+            background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 56px 56px; background-position: -1px -1px; }
+        body::before { content: ''; position: fixed; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(11, 17, 24, .2), var(--bg) 75%); pointer-events: none; z-index: 0; }
+        .wrap { max-width: 1020px; margin: 0 auto; padding: 0 22px; position: relative; z-index: 1; }
+
+        nav { position: sticky; top: 0; z-index: 20; background: rgba(11, 17, 24, .88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
+        nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 58px; gap: 16px; }
+        .brand { font-family: var(--mono); font-size: .9rem; color: var(--green); text-decoration: none; font-weight: 700; }
+        .brand span { color: var(--muted); font-weight: 400; }
+        nav ul { display: flex; gap: 4px; list-style: none; }
+        nav ul a { font-family: var(--mono); font-size: .82rem; color: var(--muted); text-decoration: none; padding: 7px 12px; border-radius: 8px; transition: .2s; }
+        nav ul a:hover { color: var(--text); }
+        nav ul a.active { color: var(--green); background: rgba(52, 211, 153, .1); }
+
+        /* Hero */
+        .hero { padding: 72px 0 60px; }
+        .hero .wrap { display: grid; grid-template-columns: 1fr 1.05fr; gap: 44px; align-items: center; }
+        .me { display: flex; gap: 22px; align-items: center; margin-bottom: 22px; }
+        .me img { width: 104px; height: 104px; border-radius: 22px; object-fit: cover; background: var(--panel); border: 2px solid var(--green); flex-shrink: 0; }
+        .hello { font-family: var(--mono); color: var(--green); font-size: 1rem; font-weight: 500; }
+        h1 { font-size: clamp(2.2rem, 5vw, 3.3rem); line-height: 1.08; font-weight: 800; letter-spacing: -1.2px; }
+        .role { font-family: var(--mono); color: var(--amber); font-weight: 500; margin: 4px 0 18px; }
+        .lead { color: var(--muted); max-width: 470px; margin-bottom: 26px; }
+        .btns { display: flex; gap: 12px; flex-wrap: wrap; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 12px 22px; border-radius: 10px; font: 700 .9rem 'Plus Jakarta Sans', sans-serif; text-decoration: none; cursor: pointer; border: 1px solid transparent; transition: transform .2s, box-shadow .2s, border-color .2s; }
+        .btn-main { background: var(--green); color: #04271b; }
+        .btn-main:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(52, 211, 153, .35); }
+        .btn-line { border-color: var(--line); color: var(--text); background: rgba(255, 255, 255, .03); }
+        .btn-line:hover { border-color: var(--green); color: var(--green); }
+
+        .term { background: var(--panel2); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; box-shadow: 0 24px 60px rgba(0, 0, 0, .45); }
+        .term-bar { display: flex; align-items: center; gap: 8px; padding: 11px 16px; background: var(--panel); border-bottom: 1px solid var(--line); font-family: var(--mono); font-size: .78rem; color: var(--muted); }
+        .dot { width: 11px; height: 11px; border-radius: 50%; }
+        .term-bar .ok { margin-left: auto; color: var(--green); }
+        .term pre { padding: 20px 22px; font-family: var(--mono); font-size: .83rem; line-height: 1.85; overflow-x: auto; }
+        .ln { display: block; opacity: 0; animation: show .01s forwards; animation-delay: calc(var(--i) * .26s + .3s); white-space: pre; }
+        @keyframes show { to { opacity: 1; } }
+        .k { color: var(--sky); } .s { color: var(--amber); } .c { color: var(--muted); } .g { color: var(--green); }
+        .cur { display: inline-block; width: 8px; height: 1em; background: var(--green); vertical-align: -2px; animation: blink 1s steps(1) infinite; }
+        @keyframes blink { 50% { opacity: 0; } }
+
+        /* Section */
+        section { padding: 64px 0; }
+        .req { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 8px; font-family: var(--mono); }
+        .verb { background: rgba(52, 211, 153, .14); color: var(--green); font-weight: 700; font-size: .8rem; padding: 4px 10px; border-radius: 6px; }
+        .verb.post { background: rgba(251, 191, 36, .14); color: var(--amber); }
+        .path { font-size: 1.05rem; }
+        .status { margin-left: auto; font-size: .78rem; color: var(--muted); }
+        .status b { color: var(--green); }
+        h2 { font-size: 1.8rem; font-weight: 800; letter-spacing: -.5px; margin-bottom: 26px; }
+
+        .card { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px; }
+        .about { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; }
+        .about p { color: #c4d0dd; margin-bottom: 12px; }
+        .facts { list-style: none; display: grid; gap: 15px; }
+        .facts li { display: flex; gap: 14px; font-size: .93rem; color: var(--muted); }
+        .facts i { color: var(--green); width: 18px; text-align: center; margin-top: 5px; }
+        .facts b { color: var(--text); display: block; font-weight: 600; }
+        blockquote { margin-top: 18px; padding: 14px 18px; border-left: 3px solid var(--amber); background: rgba(251, 191, 36, .06); border-radius: 0 10px 10px 0; font-style: italic; color: #e2d6b5; }
+
+        /* Pipeline */
+        .pipe { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; align-items: stretch; }
+        .node { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px 20px; position: relative; margin-right: 34px; transition: border-color .25s, transform .25s; }
+        .node:last-child { margin-right: 0; }
+        .node:hover { border-color: var(--green); transform: translateY(-4px); }
+        .node:not(:last-child)::after { content: '\f061'; font-family: 'Font Awesome 6 Free'; font-weight: 900; position: absolute; right: -27px; top: 50%; transform: translateY(-50%); color: var(--green); font-size: .9rem; }
+        .node i.ic { font-size: 1.7rem; margin-bottom: 12px; display: block; }
+        .node small { font-family: var(--mono); color: var(--muted); font-size: .72rem; }
+        .node h3 { font-size: 1.05rem; margin: 2px 0 6px; }
+        .node p { color: var(--muted); font-size: .86rem; line-height: 1.55; }
+        .lang { margin-top: 16px; display: flex; align-items: center; gap: 14px; padding: 14px 20px; border: 1px dashed rgba(251, 191, 36, .45); border-radius: 12px; color: #e2d6b5; font-size: .92rem; }
+        .lang i { color: #facc15; font-size: 1.5rem; }
+
+        /* Goals */
+        .goals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .goal small { font-family: var(--mono); color: var(--green); font-size: .78rem; }
+        .goal h3 { font-size: 1.05rem; margin: 6px 0; }
+        .goal p { color: var(--muted); font-size: .9rem; }
+
+        /* Projects */
+        .projects { display: grid; grid-template-columns: 1.3fr 1fr; gap: 18px; }
+        .project h3 { font-size: 1.25rem; margin-bottom: 8px; }
+        .project p { color: var(--muted); margin-bottom: 16px; }
+        .tags { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+        .tags span { font-family: var(--mono); font-size: .74rem; padding: 4px 11px; border-radius: 6px; background: rgba(125, 211, 252, .1); color: var(--sky); }
+        .link { color: var(--green); text-decoration: none; font-weight: 700; }
+        .link:hover { text-decoration: underline; }
+        .empty { border: 2px dashed var(--line); border-radius: 16px; padding: 26px; display: grid; place-content: center; text-align: center; color: var(--muted); font-size: .92rem; gap: 6px; }
+        .empty code { font-family: var(--mono); color: var(--amber); }
+
+        /* Contact */
+        .contact { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; }
+        .ct { display: flex; align-items: center; gap: 16px; padding: 20px 22px; border-radius: 16px; background: var(--panel); border: 1px solid var(--line); color: var(--text); text-decoration: none; overflow-wrap: anywhere; font-size: .93rem; transition: border-color .2s; }
+        .ct:hover { border-color: var(--green); }
+        .ct i { color: var(--green); width: 24px; text-align: center; font-size: 1.3rem; }
+        .ct small { display: block; font-family: var(--mono); color: var(--muted); font-size: .74rem; line-height: 1.4; }
+
+        footer { padding: 30px 0 40px; text-align: center; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); position: relative; z-index: 1; }
+        footer a { color: var(--green); text-decoration: none; font-weight: 600; }
+        a:focus-visible, .btn:focus-visible { outline: 3px solid #6ee7b7; outline-offset: 3px; }
+
+        @media (max-width: 860px) {
+            nav ul { display: none; }
+            .hero { padding: 40px 0; }
+            .hero .wrap, .about, .projects { grid-template-columns: 1fr; }
+            .goals { grid-template-columns: 1fr; }
+            .pipe { grid-template-columns: 1fr; gap: 30px; }
+            .node { margin-right: 0; }
+            .node:not(:last-child)::after { content: '\f063'; right: 50%; top: auto; bottom: -26px; transform: translateX(50%); }
+            section { padding: 46px 0; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .ln { opacity: 1; animation: none; }
+            .cur { animation: none; }
+            * { transition: none !important; }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="wrap">
+            <a class="brand" href="#top">Trần Hoàng Quý</a>
+            <ul id="menu">
+                <li><a href="#about">/about</a></li>
+                <li><a href="#stack">/stack</a></li>
+                <li><a href="#goals">/goals</a></li>
+                <li><a href="#projects">/projects</a></li>
+                <li><a href="#contact">/contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero" id="top">
+        <div class="wrap">
+            <div>
+                <div class="me">
+                    <img src="images/quy.jpg" alt="Ảnh Trần Hoàng Quý"
+                        onerror="this.onerror=null; this.src='data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 24 24%27 fill=%27%2394a3b8%27%3E%3Cpath d=%27M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z%27/%3E%3C/svg%3E';">
+                    <div>
+                        <div class="hello">Xin chào, mình là thành viên Nhóm 9</div>
+                    </div>
+                </div>
+                <h1>Trần Hoàng Quý</h1>
+                <p class="lead" style="margin-top:14px">Mình làm phần hệ thống phía sau của website: nhận yêu cầu, xử lý dữ liệu và trả kết quả về cho giao diện một cách nhanh, gọn, dễ kiểm thử.</p>
+                <div class="btns">
+                    <a class="btn btn-line" href="https://github.com/quy2409" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+
+            <div class="term" aria-label="Thông tin tóm tắt dạng JSON">
+                <div class="term-bar"><span class="dot" style="background:#fb7185"></span><span class="dot" style="background:#fbbf24"></span><span class="dot" style="background:#34d399"></span>
+                    <span>GET /quy</span><span class="ok">200 OK</span></div>
+<pre><span class="ln" style="--i:0">{</span><span class="ln" style="--i:1">  <span class="k">"name"</span>: <span class="s">"Trần Hoàng Quý"</span>,</span><span class="ln" style="--i:2">  <span class="k">"role"</span>: <span class="s">"Backend Developer"</span>,</span><span class="ln" style="--i:3">  <span class="k">"school"</span>: <span class="s">"ĐH Giao thông Vận tải TP.HCM"</span>,</span><span class="ln" style="--i:4">  <span class="k">"major"</span>: <span class="s">"Công nghệ thông tin"</span>,</span><span class="ln" style="--i:5">  <span class="k">"team"</span>: <span class="s">"Nhóm 9"</span>,</span><span class="ln" style="--i:6">  <span class="k">"stack"</span>: [<span class="s">"JavaScript"</span>, <span class="s">"React"</span>,</span><span class="ln" style="--i:7">            <span class="s">"Node.js"</span>, <span class="s">"MongoDB"</span>, <span class="s">"Git"</span>],</span><span class="ln" style="--i:8">  <span class="k">"learning"</span>: <span class="g">true</span></span><span class="ln" style="--i:9">}<span class="cur"></span></span></pre>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="about">
+            <div class="wrap">
+                <div class="req"><span class="verb">GET</span><span class="path">/about</span><span class="status"><b>200</b> OK</span></div>
+                <h2>Về mình</h2>
+                <div class="about">
+                    <div class="card">
+                        <p>Mình hỗ trợ kết nối giữa giao diện người dùng và hệ thống phía sau, tối ưu hiệu năng và kiểm thử mã nguồn liên tục.</p>
+                        <p>Trong Nhóm 9, mình đảm nhận vai trò Backend Developer của dự án giữa kỳ môn Lập trình Web.</p>
+                        <blockquote>Không ngừng học hỏi để vượt qua mọi thách thức kỹ thuật.</blockquote>
+                    </div>
+                    <div class="card">
+                        <ul class="facts">
+                            <li><i class="fas fa-school"></i><span><b>Trường</b>Đại học Giao thông Vận tải TP.HCM</span></li>
+                            <li><i class="fas fa-book"></i><span><b>Chuyên ngành</b>Công nghệ thông tin</span></li>
+                            <li><i class="fas fa-users"></i><span><b>Nhóm</b>Nhóm 9 - Lập trình Web</span></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="stack">
+            <div class="wrap">
+                <div class="req"><span class="verb">GET</span><span class="path">/stack</span><span class="status"><b>200</b> OK</span></div>
+                <h2>Một yêu cầu đi qua những gì?</h2>
+                <div class="pipe">
+                    <div class="node"><i class="fab fa-react ic" style="color:#38bdf8"></i><small>1. client</small><h3>React</h3><p>Dựng giao diện và gửi yêu cầu từ phía người dùng.</p></div>
+                    <div class="node"><i class="fab fa-node-js ic" style="color:#4ade80"></i><small>2. server</small><h3>Node.js</h3><p>Nhận yêu cầu, xử lý logic và trả dữ liệu qua API.</p></div>
+                    <div class="node"><i class="fas fa-database ic" style="color:#34d399"></i><small>3. database</small><h3>MongoDB</h3><p>Lưu và truy vấn dữ liệu dạng document.</p></div>
+                    <div class="node"><i class="fab fa-git-alt ic" style="color:#fb923c"></i><small>4. workflow</small><h3>Git</h3><p>Quản lý phiên bản mã nguồn và làm việc nhóm.</p></div>
+                </div>
+                <div class="lang"><i class="fab fa-js"></i><span>JavaScript là ngôn ngữ xuyên suốt từ giao diện đến máy chủ, nên mình viết cả hai phía bằng một ngôn ngữ.</span></div>
+            </div>
+        </section>
+
+        <section id="goals">
+            <div class="wrap">
+                <div class="req"><span class="verb">GET</span><span class="path">/goals</span><span class="status"><b>200</b> OK</span></div>
+                <h2>Mình đang hướng tới</h2>
+                <div class="goals">
+                    <div class="card goal"><small>ngắn hạn</small><h3>Vững nền tảng</h3><p>Hoàn thành tốt dự án giữa kỳ và nắm chắc JavaScript, Node.js.</p></div>
+                    <div class="card goal"><small>trung hạn</small><h3>Tự xây API hoàn chỉnh</h3><p>Làm REST API kết nối MongoDB, có kiểm thử và quản lý mã bằng Git.</p></div>
+                    <div class="card goal"><small>dài hạn</small><h3>Trở thành Backend Developer</h3><p>Tham gia dự án thực tế và tiếp tục học hỏi mỗi ngày.</p></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="wrap">
+                <div class="req"><span class="verb">GET</span><span class="path">/projects</span><span class="status"><b>200</b> OK</span></div>
+                <h2>Dự án</h2>
+                <div class="projects">
+                    <div class="card project">
+                        <h3>Trang giới thiệu Nhóm 9</h3>
+                        <p>Website giới thiệu nhóm và portfolio của 6 thành viên, có popup xem chi tiết từng người. Dự án giữa kỳ môn Lập trình Web.</p>
+                        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span><span>GitHub Pages</span></div>
+                        <a class="link" href="index.html">Xem trang nhóm <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                    <div class="empty"><i class="fas fa-code-branch" style="color:var(--green);font-size:1.4rem"></i><span>Dự án tiếp theo đang được xây dựng</span><code>git commit -m "coming soon"</code></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="wrap">
+                <div class="req"><span class="verb">GET</span><span class="path">/contact</span><span class="status"><b>200</b> OK</span></div>
+                <h2>Liên hệ</h2>
+                <div class="contact">
+                    <a class="ct" href="mailto:tranhoangquy26@gmail.com"><i class="fas fa-envelope"></i><span><small>email</small>tranhoangquy26@gmail.com</span></a>
+                    <a class="ct" href="https://github.com/quy2409" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i><span><small>github</small>github.com/quy2409</span></a>
+                    <a class="ct" href="index.html"><i class="fas fa-users"></i><span><small>nhóm</small>Nhóm 9</span></a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap"><p>Portfolio của Trần Hoàng Quý · Nhóm 9 · <a href="index.html">Quay lại trang nhóm</a> · <a href="#top">Lên đầu trang</a></p></div>
+    </footer>
+
+    <script>
+        // Tô sáng menu theo phần đang xem
+        const links = document.querySelectorAll('#menu a');
+        const secs = [...links].map(a => document.querySelector(a.getAttribute('href')));
+        function setActive() {
+            const y = window.scrollY + 140; let cur = -1;
+            secs.forEach((s, i) => { if (s && s.offsetTop <= y) cur = i; });
+            links.forEach((a, i) => a.classList.toggle('active', i === cur));
+        }
+        addEventListener('scroll', setActive, { passive: true }); setActive();
+    </script>
+</body>
+
+</html>
