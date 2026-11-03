@@ -799,7 +799,7 @@
 
         <main class="members-grid">
             <!-- Thành Viên 1 -->
-            <a class="member-card" data-theme="indigo" href="vo-duc-tin.html">
+            <div class="member-card" data-theme="indigo" onclick="openMemberModal(0)">
                 <div class="avatar-box">
                     <img src="images/tin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
@@ -811,10 +811,10 @@
                 <span class="role-pill">Trưởng Nhóm</span>
                 <span class="view-btn"><span>Xem chi tiết</span><i
                         class="fas fa-arrow-right"></i></span>
-            </a>
+            </div>
 
             <!-- Thành Viên 2 -->
-            <a class="member-card" data-theme="cyan" href="vo-van-tin.html">
+            <div class="member-card" data-theme="cyan" onclick="openMemberModal(1)">
                 <div class="avatar-box">
                     <img src="images/van-tin.jpg" alt="Avatar" class="avatar-img" style="display: none;"
                         onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
@@ -826,7 +826,7 @@
                 <span class="role-pill">Thành viên</span>
                 <span class="view-btn"><span>Xem chi tiết</span><i
                         class="fas fa-arrow-right"></i></span>
-            </a>
+            </div>
 
             <!-- Thành Viên 3 -->
             <div class="member-card" data-theme="violet" onclick="openMemberModal(2)">
